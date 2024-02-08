@@ -1518,6 +1518,7 @@ export interface StateParameters {
   entity?: string;
   icon?: string;
   title?: string | null;
+  title_short?: string | null;
   state_color?: boolean;
   style?: StyleInfo;
   data_domain?: string;

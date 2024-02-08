@@ -10,6 +10,22 @@ ha-icon-button.button {
   opacity: 0.9;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(var(--frigate-card-menu-button-size) + 20px); /* Adjusts width based on variable */
+  height: auto; /* Adjust height as needed, or set a specific height */
+  overflow: hidden; /* Ensures content that overflows is not shown */
+}
+
+.button-label {
+  margin-top: 4px; // Adjust as needed
+  font-size: 12px; // Adjust as needed
+  color: var(--primary-text-color, white); // Adjust as needed
+  text-align: center;
+}
+
 // =====================================================================================
 // From: https://github.com/home-assistant/frontend/blob/dev/src/common/style/icon_color_css.ts
 // Modified version for ha-icon and ha-icon-button.

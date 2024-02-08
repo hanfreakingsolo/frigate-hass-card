@@ -73,6 +73,7 @@ export class MenuButtonController {
       ...config.menu.buttons.frigate,
       type: 'custom:frigate-card-menu-icon',
       title: localize('config.menu.buttons.frigate'),
+      title_short: localize('config.menu.buttons.frigate_short'),
       tap_action:
         config.menu?.style === 'hidden'
           ? (createFrigateCardCustomAction('menu_toggle') as FrigateCardCustomAction)
@@ -250,6 +251,7 @@ export class MenuButtonController {
         ...config.menu.buttons.camera_ui,
         type: 'custom:frigate-card-menu-icon',
         title: localize('config.menu.buttons.camera_ui'),
+        title_short: localize('config.menu.buttons.camera_ui_short'),
         tap_action: createFrigateCardCustomAction(
           'camera_ui',
         ) as FrigateCardCustomAction,
@@ -272,6 +274,7 @@ export class MenuButtonController {
         ...config.menu.buttons.microphone,
         type: 'custom:frigate-card-menu-icon',
         title: localize('config.menu.buttons.microphone'),
+        title_short: localize('config.menu.buttons.microphone_short'),
         style: forbidden || muted ? {} : this._getEmphasizedStyle(true),
         ...(!forbidden &&
           buttonType === 'momentary' && {
@@ -350,6 +353,7 @@ export class MenuButtonController {
         ...config.menu.buttons.media_player,
         type: 'custom:frigate-card-menu-submenu',
         title: localize('config.menu.buttons.media_player'),
+        title_short: localize('config.menu.buttons.media_player_short'),
         items: mediaPlayerItems,
       });
     }

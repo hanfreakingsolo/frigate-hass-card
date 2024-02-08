@@ -273,24 +273,28 @@ export class FrigateCardMenu extends LitElement {
     // - Static styling based on domain (`data-domain`) and state
     //   (`data-state`). This looks up a CSS style in `menu.scss`.
 
-    return html` <ha-icon-button
-      data-domain=${ifDefined(stateParameters.data_domain)}
-      data-state=${ifDefined(stateParameters.data_state)}
-      class="${classMap(classes)}"
-      style="${styleMap(stateParameters.style || {})}"
-      .actionHandler=${actionHandler({
-        hasHold: hasHold,
-        hasDoubleClick: hasDoubleClick,
-      })}
-      .label=${stateParameters.title || ''}
-      @action=${(ev) => this._actionHandler(ev, button)}
-    >
-      ${svgPath
+    return html`
+    <div class="button-container">
+      <ha-icon-button
+        data-domain=${ifDefined(stateParameters.data_domain)}
+        data-state=${ifDefined(stateParameters.data_state)}
+        class="${classMap(classes)}"
+        style="${styleMap(stateParameters.style || {})}"
+        .actionHandler=${actionHandler({
+      hasHold: hasHold,
+      hasDoubleClick: hasDoubleClick,
+    })}
+        .label=${stateParameters.title || ''}
+        @action=${(ev) => this._actionHandler(ev, button)}
+      >
+        ${svgPath
         ? html`<ha-svg-icon .path="${svgPath}"></ha-svg-icon>`
         : html`<ha-icon
-            icon="${stateParameters.icon || 'mdi:gesture-tap-button'}"
-          ></ha-icon>`}
-    </ha-icon-button>`;
+              icon="${stateParameters.icon || 'mdi:gesture-tap-button'}"
+            ></ha-icon>`}
+      </ha-icon-button>
+      <div class="button-label">${stateParameters.title_short || stateParameters.title || 'Default Text'}</div>
+    </div>`;
   }
 
   /**
@@ -310,16 +314,16 @@ export class FrigateCardMenu extends LitElement {
     const matchingButtons = (
       style !== 'hidden' || this.expanded
         ? this.buttons.filter(
-            (button) => !button.alignment || button.alignment === 'matching',
-          )
+          (button) => !button.alignment || button.alignment === 'matching',
+        )
         : this.buttons.filter((button) => button.icon === FRIGATE_BUTTON_MENU_ICON)
     ).filter((button) => button.enabled !== false);
 
     const opposingButtons =
       style !== 'hidden' || this.expanded
         ? this.buttons.filter(
-            (button) => button.alignment === 'opposing' && button.enabled !== false,
-          )
+          (button) => button.alignment === 'opposing' && button.enabled !== false,
+        )
         : [];
 
     const matchingStyle = {
